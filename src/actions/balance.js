@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { SET_BALANCE, EXECUTE_TRANSACTION } from '../actionTypes';
 
 function setBalance(balance){
@@ -16,7 +17,10 @@ function sendTransaction(transactionValue){
 
 export function fetchBalance(){
   return dispatch => {
-    dispatch(setBalance(12));
+    axios.get(`https://codepen.io/andismith/pen/oqzxyP.js`)
+    .then(res => {
+      dispatch(setBalance(res.data.balance));
+    })    
   }
 }
 
