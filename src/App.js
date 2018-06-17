@@ -23,12 +23,17 @@ class App extends React.Component{
 
 		const incrementValue = 2;
 
+		const warning = {
+			color: 'red',
+		};
+
 		return(
 			<Grid>
         <h1>Your Account</h1>
 				<Row>
 					<Col md={6}>
-						Current Balance: £{balance.toFixed(2)}
+						{balance < 0 && <h2 style={warning}>Your account is in the negative values</h2>}
+						<p style={balance < 0 ? warning : {}} >Current Balance: £{balance.toFixed(2)}</p>
 					</Col>
 				</Row>
 				<Button
