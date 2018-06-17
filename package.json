@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open",
     "prod": "NODE_ENV=production node server.js",
-    "build": "NODE_ENV='production' && webpack -p"
+    "postinstall": "webpack -p --progress --colors"
   },
   "keywords": [],
   "author": "",
