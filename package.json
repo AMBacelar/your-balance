@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "webpack-dev-server --mode development --open",
-    "prod": "NODE_ENV=production node server.js",
+    "prod": "webpack -p --progress --colors && node server.js NODE_ENV=production",
     "build": "webpack -p --progress --colors"
   },
   "keywords": [],
