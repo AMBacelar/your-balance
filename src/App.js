@@ -6,23 +6,14 @@ import PropTypes from 'prop-types';
 import { fetchBalance, processTransaction } from './actions/balance';
 
 class App extends React.Component{
-	constructor(props){
-		super(props);
-		this.state = {
-
-		}
-	}
 
 	componentDidMount() {
 		this.props.fetchBalance();
 	}
 
 	render(){
-
 		const { balance, processTransaction } = this.props;
-
 		const incrementValue = 2;
-
 		const warning = {
 			color: 'red',
 		};
