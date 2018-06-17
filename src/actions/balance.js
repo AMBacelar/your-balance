@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { SET_BALANCE, EXECUTE_TRANSACTION } from '../actionTypes';
 
-function setBalance(balance){
+export function setBalance(balance){
   return{
     type: SET_BALANCE,
     balance
   }
 }
 
-function sendTransaction(transactionValue){
+export function sendTransaction(transactionValue){
   return{
     type: EXECUTE_TRANSACTION,
     transactionValue
