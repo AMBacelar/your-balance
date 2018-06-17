@@ -1,18 +1,27 @@
 import { SET_BALANCE, EXECUTE_TRANSACTION } from '../actionTypes';
 
-// set balance
-export function setBalance(balance){
+function setBalance(balance){
   return{
     type: SET_BALANCE,
     balance
   }
 }
 
-export function fetchBalance(){
-  return dispatch => {
-    dispatch(setBalance(12))
-    return Promise.resolve()
+function sendTransaction(transactionValue){
+  return{
+    type: EXECUTE_TRANSACTION,
+    transactionValue
   }
 }
 
-// transaction
+export function fetchBalance(){
+  return dispatch => {
+    dispatch(setBalance(12));
+  }
+}
+
+export function processTransaction( valueChange ) {
+  return dispatch => {
+    dispatch(sendTransaction(valueChange));
+  }
+}

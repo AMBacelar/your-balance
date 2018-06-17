@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-import { fetchBalance } from './actions/balance';
+import { fetchBalance, processTransaction } from './actions/balance';
 
 class App extends React.Component{
 	constructor(props){
@@ -19,7 +19,9 @@ class App extends React.Component{
 
 	render(){
 
-		const { balance } = this.props;
+		const { balance, processTransaction } = this.props;
+
+		const incrementValue = 2;
 
 		return(
 			<Grid>
@@ -29,10 +31,14 @@ class App extends React.Component{
 						Current Balance: £{balance.toFixed(2)}
 					</Col>
 				</Row>
-				<Button>
+				<Button
+					onClick={() => processTransaction(incrementValue)}
+				>
 					increment
 				</Button>
-				<Button>
+				<Button
+					onClick={() => processTransaction(incrementValue * -1)}
+				>
 					decrement
 				</Button>
 			</Grid>
@@ -49,6 +55,7 @@ function mapStateToProps(state) {
 App.propTypes = {
 	balance: PropTypes.number.isRequired,
 	fetchBalance: PropTypes.func.isRequired,
+	processTransaction: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps, { fetchBalance } )(App);
+export default connect(mapStateToProps, { fetchBalance, processTransaction } )(App);
