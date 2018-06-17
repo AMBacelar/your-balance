@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+
+import { fetchBalance } from './actions/balance';
 
 class App extends React.Component{
 	constructor(props){
@@ -12,17 +14,27 @@ class App extends React.Component{
 	}
 
 	componentDidMount() {
+		this.props.fetchBalance();
 	}
 
 	render(){
+
+		const { balance } = this.props;
+
 		return(
 			<Grid>
         <h1>Your Account</h1>
 				<Row>
 					<Col md={6}>
-						Current Balance:
+						Current Balance: £{balance.toFixed(2)}
 					</Col>
 				</Row>
+				<Button>
+					increment
+				</Button>
+				<Button>
+					decrement
+				</Button>
 			</Grid>
 		)
 	}
@@ -30,11 +42,13 @@ class App extends React.Component{
 
 function mapStateToProps(state) {
 	return {
-		
+		balance: state.balance,
 	};
 }
 
 App.propTypes = {
+	balance: PropTypes.number.isRequired,
+	fetchBalance: PropTypes.func.isRequired,
 }
 
-export default connect(mapStateToProps, null )(App);
+export default connect(mapStateToProps, { fetchBalance } )(App);
