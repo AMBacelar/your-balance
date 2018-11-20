@@ -1,1 +1,0 @@
-web: webpack -p --progress --colors && node server.js NODE_ENV=production
